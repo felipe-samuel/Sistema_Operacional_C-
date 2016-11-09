@@ -24,10 +24,12 @@ O sistema computacional foi mapeado em uma FPGA (Field Programmable Gate Array) 
 
 O projeto foi dividido em diversas etapas menores listadas abaixo.
 
-*Ajustes no Compilador e projeto de algoritmos;
+1.  Ajustes no Compilador e projeto de algoritmos;
 
-*Definição do Sistema Operacional a ser projetado, técnicas e algoritmos a serem virtualizados;
+2. Definição do Sistema Operacional a ser projetado, técnicas e algoritmos a serem virtualizados;
 	
-*Adaptações necessárias na plataforma de hardware e implementação da Bios, HD e Sistema de Comunicação entre Componentes;
+3.  Adaptações necessárias na plataforma de hardware e implementação da Bios, HD e Sistema de Comunicação entre Componentes;
 	
-*Finalização da implementação do Sistema Operacional.
+4.  Finalização da implementação do Sistema Operacional.
+
+O projeto se encontra atualmente em sua segunda etapa.
