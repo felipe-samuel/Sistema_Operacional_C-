@@ -1,12 +1,12 @@
-Projeto de um Sistema Operacional em C-
+#Projeto de um Sistema Operacional em C-
 
-Aluno: Samuel Felipe dos Santos R.A.: 86948
-
-
+##Aluno: Samuel Felipe dos Santos 	R.A.: 86948
 
 
 
-Objetivos Gerais
+
+
+##Objetivos Gerais
 
 Este projeto tem como objetivo a implementação de um sistema operacional capaz de gerenciar processos, memoria e unidades de entrada e saída.
 
@@ -20,14 +20,14 @@ O sistema computacional foi mapeado em uma FPGA (Field Programmable Gate Array) 
 
 
 
-Objetivos Especificos
+##Objetivos Especificos
 
 O projeto foi dividido em diversas etapas menores listadas abaixo.
 
-	Ajustes no Compilador e projeto de algoritmos;
+*Ajustes no Compilador e projeto de algoritmos;
 
-	Definição do Sistema Operacional a ser projetado, técnicas e algoritmos a serem virtualizados;
+*Definição do Sistema Operacional a ser projetado, técnicas e algoritmos a serem virtualizados;
 	
-	Adaptações necessárias na plataforma de hardware e implementação da Bios, HD e Sistema de Comunicação entre Componentes;
+*Adaptações necessárias na plataforma de hardware e implementação da Bios, HD e Sistema de Comunicação entre Componentes;
 	
-	Finalização da implementação do Sistema Operacional.
+*Finalização da implementação do Sistema Operacional.
