@@ -1,0 +1,31 @@
+
+informações gerais:
+
+  registrador de ativação: 0
+  registrador de fim de memoria: 1
+
+  registradores temporarios: 2,3,7,8 ...
+  registrador de operadores: 4,5
+  registrador de resultado: 6
+
+  interpret_argumento1: devolve resultado no registrador 4, sobreescreve registrador 3 e 2
+  interpret_argumento2: devolve resultado no registrador 5, sobreescreve registrador 3 e 2
+
+  pesquisa_argumento1: devolve resultado no registrador 2, sobreescreve registrador 2
+
+
+  novas instrauções:
+  LoadR  11100: [r1,r2] grava em r1 o valor contido na memoria de posição r2
+  StoreR 11101: [r1,r2] grava na memoria na posição contida em r2 o valor contido em r1
+  Div    11110: [r1,r2,r3] r1<-r2/r3
+  Smt    10010: [r1,r2,r3] if(r2>r3) r1=1; else r1=0;
+
+
+
+a fazer:
+
+  consertar erro: endereço de memoria das variaveis globais.
+
+  adidicionar supore a vetores como variaveis intermediarias.
+
+  adicionar compaações >= e <=

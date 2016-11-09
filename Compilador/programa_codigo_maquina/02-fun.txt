@@ -1,0 +1,221 @@
+0       J       05b0    22b48
+
+//multi--------------------------------------------------------------------------------------
+
+  //carrega parametro x;
+1       AddI    05b3    05b1    17b1
+2       Move    05b1    05b3    17b0 //incrementa pontero r1
+3       SubI    05b2    05b0    17b4  //carrega informação de r0 - 4
+4       LoadR   05b5    05b2    17b0
+5       AddI    05b3    05b0    17b0
+6       StoreR  05b5    05b3    17b0
+
+
+  //carrega parametro y;
+7       AddI    05b3    05b1    17b1
+8       Move    05b1    05b3    17b0  //incrementa pontero r1
+9       AddI    05b3    05b1    17b1
+10      Move    05b1    05b3    17b0  //incrementa pontero r1 ------------ errado?
+11      SubI    05b2    05b0    17b3  //carrega informação de r0 - 3
+12      LoadR   05b5    05b2    17b0
+13      AddI    05b3    05b0    17b1
+14      StoreR  05b5    05b3    17b0
+
+
+  //declaração de z
+15      AddI    05b3    05b1    17b1
+16      Move    05b1    05b3    17b0
+
+17      AddI    05b3    05b1    17b1//errado?
+18      Move    05b1    05b3    17b0
+
+  //* y x
+19      AddI    05b3    05b0    17b0
+20      LoadR   05b4    05b3    17b0
+21      AddI    05b3    05b0    17b1
+22      LoadR   05b5    05b3    17b0
+23      Mult    05b6    05b4    05b5
+24      AddI    05b3    05b0    17b3
+25      StoreR  05b6    05b3    17b0
+26      AddI    05b3    05b1    17b1
+27      Move    05b1    05b3    17b0
+
+//z = temp
+28      AddI    05b3    05b0    17b3
+29      LoadR   05b5    05b3    17b0
+30      AddI    05b2    05b0    17b2
+31      StoreR  05b5    05b2    17b0
+
+
+
+  // temp var z
+32      AddI    05b3    05b0    17b2
+33      LoadR   05b4    05b3    17b0
+34      AddI    05b3    05b0    17b4
+35      StoreR  05b4    05b3    17b0
+36      AddI    05b3    05b1    17b1
+37      Move    05b1    05b3    17b0
+
+
+   // retorno tem var z
+38      AddI    05b3    05b0    17b4
+39      LoadR   05b4    05b3    17b0 //carrega temp var z
+40      SubI    05b3    05b0    17b1 //carrega antigo valor de r0 de r0-1
+41      SubI    05b6    05b0    17b2 //carrega antigo pc de r0-2
+42      Move    05b1    05b2    17b0 //r1 =  r0-2
+43      LoadR   05b0    05b3    17b0
+        LoadR   05b6    05b2    17b0
+
+
+44      StoreR  05b4    05b1    17b0
+45      AddI    05b3    05b1    17b1
+46      Move    05b1    05b3    17b0
+
+47      Jr      05b0    05b6    17b0
+
+
+
+//main---------------------------------------------------------------------------
+
+48      AddI    05b3    05b1    17b1
+49      Move    05b1    05b3    17b0 //aloca x
+
+50      AddI    05b3    05b1    17b1
+51      Move    05b1    05b3    17b0 //aloca y
+
+  //temp var int 1
+52      SetR    05b4    22b1
+53      AddI    05b3    05b0    17b2
+54      StoreR  05b4    05b3    17b0
+55      AddI    05b3    05b1    17b1
+56      Move    05b1    05b3    17b0
+
+  //seleção
+57      AddI    05b3    05b0    17b2
+58      LoadR   05b4    05b3    17b0
+59      SetR    05b05   22b1
+60      Beq     05b04   05b05   17b2
+61      J       05b0    22b151
+
+  //input 1
+62      Input   05b6    05b0    17b0
+63      Output  05b0    05b6    17b0
+64      Input   05b5    05b20   17b0
+65      SetR    05b3    22b1
+66      Beq     05b3    05b5    17b2
+67      J       05b0    22b62
+68      Input   05b5    05b20   17b0
+69      SetR    05b3    22b0
+70      Beq     05b3    05b5    17b2
+71      J       05b0    22b68
+72      AddI    05b3    05b0    17b3
+73      StoreR  05b6    05b3    17b0
+74      AddI    05b3    05b1    17b1
+75      Move    05b1    05b3    17b0
+
+  //x=input1;
+76      AddI    05b3    05b0    17b3
+77      LoadR   05b5    05b3    17b0 //carrega o input 1;
+78      AddI    05b2    05b0    17b0
+79      StoreR  05b5    05b2    17b0
+
+
+  //input2
+80      Input   05b6    05b0    17b0
+81      Output  05b0    05b6    17b0
+82      Input   05b5    05b20   17b0
+83      SetR    05b3    22b1
+84      Beq     05b3    05b5    17b2
+85      J       05b0    22b80
+86      Input   05b5    05b20   17b0
+87      SetR    05b3    22b0
+88      Beq     05b3    05b5    17b2
+89      J       05b0    22b86
+90      AddI    05b3    05b0    17b4
+91      StoreR  05b6    05b3    17b0
+92      AddI    05b3    05b1    17b1
+93      Move    05b1    05b3    17b0
+
+  //y=input2
+94      AddI    05b3    05b0    17b4
+95      LoadR   05b5    05b3    17b0 //carrega input2
+96      AddI    05b2    05b0    17b1
+97      StoreR  05b5    05b2    17b0
+
+  //var temp x
+98      AddI    05b3    05b0    17b0
+99      LoadR   05b4    05b3    17b0
+100     AddI    05b3    05b0    17b5
+101     StoreR  05b4    05b3    17b0
+102     AddI    05b3    05b1    17b1
+103     Move    05b1    05b3    17b0
+
+  //var temp y
+104     AddI    05b3    05b0    17b1
+105     LoadR   05b4    05b3    17b0
+106     AddI    05b3    05b0    17b6
+107     StoreR  05b4    05b3    17b0
+108     AddI    05b3    05b1    17b1
+109     Move    05b1    05b3    17b0
+
+  //argumento 1 - x
+110     AddI    05b3    05b0    17b5
+111     LoadR   05b4    05b3    17b0
+112     AddI    05b3    05b0    17b7
+113     StoreR  05b4    05b3    17b0
+114     AddI    05b3    05b1    17b1
+115     Move    05b1    05b3    17b0
+
+  //argumento 2 - y
+116     AddI    05b3    05b0    17b6
+117     LoadR   05b4    05b3    17b0
+118     AddI    05b3    05b0    17b8
+119     StoreR  05b4    05b3    17b0
+120     AddI    05b3    05b1    17b1
+121     Move    05b1    05b3    17b0
+
+  //ativação
+122     MovePC  05b3    22b0
+123     StoreR  05b3    05b1    17b0
+124     AddI    05b3    05b1    17b1
+125     Move    05b1    05b3    17b0
+
+126     StoreR  05b0    05b1    17b0  //armazena r0
+127     AddI    05b3    05b1    17b1
+128     Move    05b1    05b3    17b0
+
+129     Move    05b0    05b1    17b0 //atualiza r0 para r1
+130     J       05b0    22b38
+
+  //x=ativação
+131     AddI    05b3    05b0    17b9
+132     LoadR   05b5    05b3    17b0
+133     AddI    05b2    05b0    17b0
+134     StoreR  05b5    05b2    17b0
+
+  //temp var x
+135     AddI    05b3    05b0    17b0
+136     LoadR   05b4    05b3    17b0
+137     AddI    05b3    05b0    17b10
+138     StoreR  05b4    05b3    17b0
+139     AddI    05b3    05b1    17b1
+140     Move    05b1    05b3    17b0
+
+  //argumento output
+141     AddI    05b3    05b0    17b10
+142     LoadR   05b4    05b3    17b0
+143     AddI    05b3    05b0    17b11
+144     StoreR  05b4    05b3    17b0
+145     AddI    05b3    05b1    17b1
+146     Move    05b1    05b3    17b0
+
+  //output
+147     AddI    05b3    05b0    17b11
+148     LoadR   05b5    05b3    17b0
+149     Output  05b2    05b5    17b0
+
+
+150     J       05b0    22b52  //volta pro while
+
+
+151     End     27b0

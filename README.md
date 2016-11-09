@@ -5,8 +5,9 @@
 
 
 
+##Objetivos do Projeto
 
-##Objetivos Gerais
+###Objetivos Gerais
 
 Este projeto tem como objetivo a implementação de um sistema operacional capaz de gerenciar processos, memoria e unidades de entrada e saída.
 
@@ -20,7 +21,7 @@ O sistema computacional foi mapeado em uma FPGA (Field Programmable Gate Array) 
 
 
 
-##Objetivos Especificos
+###Objetivos Especificos
 
 O projeto foi dividido em diversas etapas menores listadas abaixo.
 
@@ -33,3 +34,18 @@ O projeto foi dividido em diversas etapas menores listadas abaixo.
 4.  Finalização da implementação do Sistema Operacional.
 
 O projeto se encontra atualmente em sua segunda etapa.
+
+##Especificações dos Diretórios Diretoórios
+
+Este projeto esta dividido nos seguintes diretórios:
+
+* **Documentação:** Contem os relatórios e apresentações geradas para o projeto;
+
+* **Processador:** Comtem o código em Verilog do sistema computacional onde o sistema operacional deve funcionar;
+
+* **Compilador:** Comtem o código em C++ do compilador que irá traduzir o código do sistema operacional de C- para o conjunto de instruções do sistema computacional;
+
+* **SO:** Comtem os codigos em C- do sistema operacional
+
+
+

@@ -1,0 +1,36 @@
+Análise sintatica iniciada
+
+Analise completa sem erros
+
+
+0	AddI	05b3	05b0	17b0
+1	LoadR	05b4	05b3
+
+
+2	AddI	05b3	05b0	17b1
+3	LoadR	05b5	05b3
+
+
+4	SetR	05b6	22b1
+5	Bob	05b4	05b5	17b2
+6	SetR	05b6	22b0
+
+7	AddI	05b3	05b0	17b5
+8	StoreR	05b6	05b3
+
+
+9	AddI	05b3	05b0	17b5
+10	LoadR	05b4	05b3
+
+11	SetR	05b05	22b1
+
+12	Bos	05b04	05b05	17b2
+13	J	27b18
+
+14	SetR	05b5	22b0
+15	AddI	05b2	05b0	17b1
+16	StoreR	05b5	05b2
+17	J	27b21
+18	SetR	05b5	22b1
+19	AddI	05b2	05b0	17b1
+20	StoreR	05b5	05b2
