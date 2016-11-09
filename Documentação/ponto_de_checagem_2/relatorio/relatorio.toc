@@ -50,10 +50,12 @@
 \contentsline {subsection}{\numberline {5.4}Gram\IeC {\'a}tica Livre de Contexto}{21}{subsection.5.4}
 \contentsline {subsection}{\numberline {5.5}Retorno de Erros}{23}{subsection.5.5}
 \contentsline {section}{\numberline {6}O Sistema Operacional}{24}{section.6}
-\contentsline {subsection}{\numberline {6.1}O Sistema Operacional: Altera\IeC {\c c}\IeC {\~o}es no Hardware}{24}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}O Sistema Operacional: Software}{24}{subsection.6.2}
-\contentsline {subsubsection}{Ger\IeC {\^e}nciamento de Processos}{25}{section*.18}
-\contentsline {subsubsection}{Ger\IeC {\^e}nciamneto de Mem\IeC {\'o}ria}{25}{section*.19}
-\contentsline {subsubsection}{Ger\IeC {\^e}nciamento de Entrada e Sa\IeC {\'\i }da}{26}{section*.20}
+\contentsline {subsection}{\numberline {6.1}Altera\IeC {\c c}\IeC {\~o}es no Compilador}{24}{subsection.6.1}
+\contentsline {subsubsection}{Buffers}{24}{section*.18}
+\contentsline {subsubsection}{Interrup\IeC {\c c}\IeC {\~o}es}{24}{section*.19}
+\contentsline {subsection}{\numberline {6.2}Processos do Sistema Operacional}{25}{subsection.6.2}
+\contentsline {subsubsection}{Ger\IeC {\^e}nciamento de Processos}{25}{section*.20}
+\contentsline {subsubsection}{Ger\IeC {\^e}nciamneto de Mem\IeC {\'o}ria}{26}{section*.21}
+\contentsline {subsubsection}{Ger\IeC {\^e}nciamento de Entrada e Sa\IeC {\'\i }da}{26}{section*.22}
 \contentsline {section}{\numberline {7}Etapas Futuras e Poss\IeC {\'\i }veis Melhorias}{27}{section.7}
 \contentsline {section}{Refer\IeC {\^e}ncias}{28}{section.7}

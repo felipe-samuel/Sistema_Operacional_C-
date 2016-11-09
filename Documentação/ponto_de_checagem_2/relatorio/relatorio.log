@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/TeX Live for SUSE Linux) (format=pdflatex 2015.12.31)  24 OCT 2016 20:33
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/TeX Live for SUSE Linux) (format=pdflatex 2015.12.31)  9 NOV 2016 10:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -909,7 +909,7 @@ LaTeX Info: Redefining \nameref on input line 3.
 \openout2 = `pretextuais/capa.aux'.
 
  (./pretextuais/capa.tex
-<figuras/logo_unifesp.jpg, id=239, 296.10625pt x 171.64125pt>
+<figuras/logo_unifesp.jpg, id=247, 296.10625pt x 171.64125pt>
 File: figuras/logo_unifesp.jpg Graphic file (type jpg)
 
 <use figuras/logo_unifesp.jpg>
@@ -1132,14 +1132,14 @@ Package babel Info: Redefining portuges shorthand "|
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 7.
 
-<figuras/Diagrama_da_cpu.jpeg, id=423, 499.11469pt x 526.21594pt>
+<figuras/Diagrama_da_cpu.jpeg, id=433, 499.11469pt x 526.21594pt>
 File: figuras/Diagrama_da_cpu.jpeg Graphic file (type jpg)
 
 <use figuras/Diagrama_da_cpu.jpeg>
 Package pdftex.def Info: figuras/Diagrama_da_cpu.jpeg used on input line 21.
 (pdftex.def)             Requested size: 449.19905pt x 473.58998pt.
 
-<figuras/Diagrama_dos_sianais_de_comtrole_da_cpu.jpeg, id=424, 603.75563pt x 63
+<figuras/Diagrama_dos_sianais_de_comtrole_da_cpu.jpeg, id=434, 603.75563pt x 63
 9.13782pt>
 File: figuras/Diagrama_dos_sianais_de_comtrole_da_cpu.jpeg Graphic file (type j
 pg)
@@ -1261,31 +1261,35 @@ Package babel Info: Redefining portuges shorthand "|
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 7.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 37.
+(babel)             in language  on input line 11.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 38.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 47.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 55.
+(babel)             in language  on input line 53.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 55.
+(babel)             in language  on input line 53.
  [24
 
 
 
 ]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 57.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 85.
+(Font)              <7> on input line 95.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 85.
+(Font)              <5> on input line 95.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 104.
+(babel)             in language  on input line 114.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 111.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 111.
+(babel)             in language  on input line 114.
  [25]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 114.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 124.
 )
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 12.
@@ -1338,14 +1342,14 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 17.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 17.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 17.
 Package rerunfilecheck Info: File `relatorio.out' has not changed.
-(rerunfilecheck)             Checksum: 9AE6931ECC5A4B30698E45C7469E7F69;4255.
+(rerunfilecheck)             Checksum: 42E2DD0695C5EA7BB10B86EB89C50B32;4364.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 17.
  ) 
 Here is how much of TeX's memory you used:
- 18944 strings out of 493315
- 327264 string characters out of 6145892
- 603723 words of memory out of 5000000
- 21852 multiletter control sequences out of 15000+600000
+ 18948 strings out of 493315
+ 327312 string characters out of 6145892
+ 603726 words of memory out of 5000000
+ 21854 multiletter control sequences out of 15000+600000
  9237 words of font info for 33 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  60i,12n,70p,541b,1543s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1358,10 +1362,10 @@ lic/amsfonts/cm/cmr6.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmsy1
 0.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/t
 exmf/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/pu
 blic/amsfonts/cm/cmtt12.pfb>
-Output written on relatorio.pdf (28 pages, 319335 bytes).
+Output written on relatorio.pdf (28 pages, 320029 bytes).
 PDF statistics:
- 605 PDF objects out of 1000 (max. 8388607)
- 555 compressed objects within 6 object streams
- 140 named destinations out of 1000 (max. 500000)
- 492 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 615 PDF objects out of 1000 (max. 8388607)
+ 565 compressed objects within 6 object streams
+ 142 named destinations out of 1000 (max. 500000)
+ 508 words of extra memory for PDF output out of 10000 (max. 10000000)
 

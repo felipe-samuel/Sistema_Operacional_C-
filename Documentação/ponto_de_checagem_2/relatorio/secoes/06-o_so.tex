@@ -2,11 +2,13 @@
 
 Nesta seção serão definidas as especificações do Sistema Operacional a ser implementado, sendo eles os algoritmos de gerenciamento de processos, memória, e entrada e saída.
 
-O sistemas operacional que será proposto terá partes de sua implementação realizada em software e parte em hardware.
+O sistemas operacional que será proposto terá partes de sua implementação realizada no compilador e outra parte em processos que irão ser executados pelo sitema computacional.
 
-\subsection{O Sistema Operacional: Alterações no Hardware}
+\subsection{Alterações no Compilador}
 
-Para implementar o sistema operacional, serão necessários realizar alterações na plataforma de hardware existente.
+Para implementar o sistema operacional, serão necessários realizar as seguintes alterações no compilador de C- existente.
+
+\subsubsection{Buffers}
 
 Serão criadas três buffers de propósito geral.
 
@@ -32,9 +34,17 @@ Cada uma desses buffers poderá ser acessada através das seguintes instruções
 
 Essas esses buffers serão utilizadas pelo software para realizar o gerenciamento de processos e passagens de parâmetro.
 
-Será necessário também a criação de um sistema de interrupções para os retirar um processo da CPU após um determinado quantum. 
 
-\subsection{O Sistema Operacional: Software}
+\subsubsection{Interrupções}
+
+Será necessário também a criação de um sistema de interrupções para os retirar um processo da CPU após um determinado quantum.
+
+Esse quantum será determinado por um determinado número de instruções executadas pela CPU.
+
+Após esse quantum, o gerenciador de processos deverá ser chamado.
+
+
+\subsection{Processos do Sistema Operacional}
 
 Em software, serão criados processos do próprio sistema operacional que cuidarão das seguintes funcionalidades:
 

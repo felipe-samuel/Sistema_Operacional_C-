@@ -49,10 +49,12 @@
 \BOOKMARK [2][-]{subsection.5.4}{Gram\341tica Livre de Contexto}{section.5}% 49
 \BOOKMARK [2][-]{subsection.5.5}{Retorno de Erros}{section.5}% 50
 \BOOKMARK [1][-]{section.6}{O Sistema Operacional}{}% 51
-\BOOKMARK [2][-]{subsection.6.1}{O Sistema Operacional: Altera\347\365es no Hardware}{section.6}% 52
-\BOOKMARK [2][-]{subsection.6.2}{O Sistema Operacional: Software}{section.6}% 53
-\BOOKMARK [3][-]{section*.18}{Ger\352nciamento de Processos}{subsection.6.2}% 54
-\BOOKMARK [3][-]{section*.19}{Ger\352nciamneto de Mem\363ria}{subsection.6.2}% 55
-\BOOKMARK [3][-]{section*.20}{Ger\352nciamento de Entrada e Sa\355da}{subsection.6.2}% 56
-\BOOKMARK [1][-]{section.7}{Etapas Futuras e Poss\355veis Melhorias}{}% 57
-\BOOKMARK [1][-]{section.7}{Refer\352ncias}{}% 58
+\BOOKMARK [2][-]{subsection.6.1}{Altera\347\365es no Compilador}{section.6}% 52
+\BOOKMARK [3][-]{section*.18}{Buffers}{subsection.6.1}% 53
+\BOOKMARK [3][-]{section*.19}{Interrup\347\365es}{subsection.6.1}% 54
+\BOOKMARK [2][-]{subsection.6.2}{Processos do Sistema Operacional}{section.6}% 55
+\BOOKMARK [3][-]{section*.20}{Ger\352nciamento de Processos}{subsection.6.2}% 56
+\BOOKMARK [3][-]{section*.21}{Ger\352nciamneto de Mem\363ria}{subsection.6.2}% 57
+\BOOKMARK [3][-]{section*.22}{Ger\352nciamento de Entrada e Sa\355da}{subsection.6.2}% 58
+\BOOKMARK [1][-]{section.7}{Etapas Futuras e Poss\355veis Melhorias}{}% 59
+\BOOKMARK [1][-]{section.7}{Refer\352ncias}{}% 60
