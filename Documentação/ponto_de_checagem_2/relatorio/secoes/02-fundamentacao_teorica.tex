@@ -1,0 +1,280 @@
+\section{Fundamentação Teórica}
+
+\subsection{CPU}
+
+A CPU (Central Processing Unit), ou UCP (Unidade Central de
+Processamento) em português, também chamado de processador, funciona
+como o cérebro do computador, sendo capaz de realizar cálculos e operações
+de acordo com um programa.
+
+Pode ser divido em Unidade de Processamento e Unidade de Controle.
+
+\subsection{Unidade de Processamento}
+
+É o local onde o processamento ocorre, sendo formada por diversas
+unidade, como a ULA (Unidade Lógica Aritimética), memórias, banco de
+registradores e etc.
+
+\subsection{Unidade de Controle (UC)}
+
+Tem a função de controlar as diversas unidades que compoem a
+Unidade de processamento, definindo como elas devem funcionar de acordo
+com as entradas e instruções.
+
+\subsection{Unidade de Controle Hardwired e Microprogramada}
+
+Uma Unidade de Controle Hardwired é formada por elementos que
+possuem lógica sequencial, onde suas saídas, os sinais de controle, são
+definidos pelas entradas atuais e anteriores.
+Caso seja necessário alterar ou incrementar o conjunto de instruções, é
+necessário mudar a UC também, geralmente tem desempenho melhor que a
+UC Microprogramada.
+
+A Unidade de Controle Microprogramada é mais flexível, funcionando
+como uma memória de bits de controle e parte do fluxo de controle para sequências desses padrões.
+
+Dessa forma, uma UC microprogramada pode ser programada através
+de um “micro-programa”, para reconhecer padrões de controle diferentes.
+
+\subsection{Circuito Combinacionais e Sequenciais}
+
+Circuitos combinacionais são aqueles em que as saídas dependem
+exclusivamente das entradas atuais.
+
+Já em um circuito sequencial, as saídas dependem dos estados
+anteriores, possuindo assim, elementos de memória.
+
+\subsection{Máquina de Estados}
+
+\textit{“Um sistema lógico que exibe uma sequência de estados condicionados
+pela lógica interna e as entradas externas; qualquer circuito sequencial que
+exibe uma sequência especifica de estados”}.
+\citep[p.496]{floyd2009sistemas}
+
+\subsubsection{Máquina de Estados Finitos de Moore}
+
+Trata-se de uma máquina de estados com uma quantidade finita de
+estados, onde as saídas dependem apenas dos estados armazenados.
+
+\subsubsection{Máquina de Estados Finitos de Mealy}
+
+Trata-se de uma máquina de estados com uma quantidade finita de
+estados, onde as saídas dependem dos estados armazenados atualmente, e
+das entradas.
+
+\subsection{Conjunto de Instruções}
+
+Conjunto de operações que um processador, microprocessador, CPU ou
+outro periférico programável é capaz de realizar.
+
+\subsection{RISC e CISC}
+
+Reduced Instruction Set Computer, ou seja Computador de Conjunto de
+Instruções Reduzidas trata-se de uma linha de arquitetura de computadores
+que favorece um conjunto simples e pequeno de intruções, que levam tempo
+aproximadamente igual para serem executadas.
+
+Alguns Exemplos de processadores que seguem essa arquitetura são, o
+MIPS, POWER PC,.
+
+A maioria dos processadores atuais utilizam um modelo hibrido entre
+RISC e CISC (Complex Instruction Set Computer).
+
+\subsection{Arquitetura LOAD/STORE}
+
+Trata-se de uma arquitetura em que apenas as instruções Load e Store
+tem acesso a memória.
+
+\subsection{FPGA}
+
+\textit{“A
+Field-Programmable
+Gate
+Array
+(FPGA)
+é
+um
+dispositivo
+semicondutor que pode ser programado após a fabricação. Em vez de ser
+restrito a qualquer função de hardware pré-determinada, um FPGA permite
+programar recursos e funções do produto, se adaptar às novas normas, e
+reconfigurar hardware para aplicações específicas, mesmo depois que o
+produto foi instalado em campo, daí o nome de "field-programmable ". Você
+pode usar um FPGA para implementar qualquer função lógica que um
+application-specific integrated circuit (ASIC) poderia realizar, mas a capacidade
+de atualizar a funcionalidade após o envio oferece vantagens para muitas
+aplicações”}. \citep{Altera2015FPGA}
+
+
+\subsection{Linguagem de Descrição de Hardware}
+
+\textit{"Uma linguagem de descrição de hardware descreve o que um sistema faz e
+como;
+Um sistema descrito em linguagem de hardware pode ser implementado
+em um dispositivo programável FPGA (Field Programmable Gate Array) ou um
+dispositivo ASIC (Aplication Specific Integrated Circuit), permitindo o uso em
+campo do Sistema”.} \citep{CASILLO}
+
+\subsection{Expressão Regular}
+
+Expressão regular se trata de uma notação que permite identificar uma sequência de caracteres.
+
+\textit{"Uma expressão regular é constituida de expressões regulares mais simples usando-se um conjunto de regras de definição. Cada expressão regular $r$ denota uma linguagem $L(r)$. As regras de definição especificam como $L(r)$ é formado através da combinação, em várias formas. das linguagens denotadas pelas subexpressões de $r$"}. \citep[p.43]{aho2008compiladores}
+
+\subsection{Gramática Livre de Contexto}
+
+Gramáticas livres de contexto podem ser usadas para definir linguagens que fazem uso de recursão, como as linguagens de programação.
+
+\textit{"Uma gramática livre de contexto possui quatro componentes: 
+	1 - Um conjunto de tokens, conhecidos como símbolos terminais.
+	2 - Um conjunto de não-terminais. 
+	3 - Um conjunto de produções, onde uma produção consiste em um não-terminal, chamado de lado esquerdo da produção, uma seta e uma sequência de tokens e/ou não-terminais, chamados de lado direito da produção.
+	4 - Uma designação a um dos não-terminais como símbolo de partida."}\citep[p.12]{aho2008compiladores}
+
+
+\subsection{Compilador}
+
+\textit{"Posto de forma simples, um compilador é um programa que lê um programa escrito numa linguagem - a linguagem fonte - e o traduz num programa equivalente numa outra linguagem - a linguagem alvo ... Como importante parte desse processo de tradução, o compilador relata a seu usuário a presença de erros no programa fonte"}.\citep[p.1]{aho2008compiladores}
+
+
+\subsection{Sistema Operacional}
+\textit{"Um sistema operacional é um programa que atua como intermediário entre o usúario e o hardware de um computador. O propósito de um sistema operacional é fornecer um ambiente no qual o usuário possa executar programas. O principal objetivo de um sistema operacional é portanto tornar o uso do sistema de computação conveniente. Uma meta secundaria é usar o hardware do computador de forma eficiente"}. \citep[p.3]{silberschatz2008sistemas}
+
+\subsection{Processos}
+
+\textit{"Informalmente, um processo é um programa em execução. Um processo é mais do que o código do programa,
+	que às vezes è chamado seção de texto. Também inclui a atividade corrente, conforme representado pelo
+	valor do contador do programa e 0 conteúdo dos registradores do processador. Um processo geralmente inclui
+	a pilha de processo, que contém dados temporários (como parâmetros de métodos, endereços de retorno
+	e variáveis locais) c uma seção de dados, que contém variáveis globais"}. \citep[p.63]{silberschatz2008sistemas}
+
+\subsection{Escalonamento da CPU}
+
+
+\textit{"O escalonamento de CPU é a base dos sistemas operacionais multiprogramados. Ao alternar a CPU entre os
+	processos, o sistema operacional pode tornar o computador produtivo"}. \citep[p.95]{silberschatz2008sistemas}
+
+
+\subsubsection{Principais Critérios}
+
+Os principais critérios para escalonamento da CPU são,:
+
+\begin{itemize}
+	\item Utilização da CPU, ou seja, manter a CPU ocupado o maior tempo possível;
+	
+	\item Throughput, o número de processos completos em uma unidade de tempo;
+	
+	\item Tempo de retorno, quanto tempo
+	leva para executar um processo, de sua submissão até sua conclusão;
+	
+	\item Tempo de Espera, o tempo que um processo espera na fila de prontos;
+	
+	\item Tempo de resposta, tempo entre a submissão do processo até a primeira resposta ser produzida.
+\end{itemize}
+
+\subsubsection{Preempção}
+
+\textit{"A estratégia de permitir processos que são logicamente executáveis serem temporariamente suspensos é chamada agendamento preemptivo, e está em oposição ao método de executar até concluir dos antigos sistemas de lote. Esse método também é chamado de agendamento não-preemptivo"}. \citep[p.70]{tanenbaum2009sistemas}
+
+
+\subsubsection{Principais Algoritmos}
+
+Serão listados abaixo alguns dos principais algoritmos de escalonamento da CPU vistos na literatura.
+
+\begin{itemize}
+	\item \textbf{Round Robin:} \textit{"A cada processo é atribuída um intervalo de tempo, chamado de seu quantum, durante o qual lhe é permitido executar. Se o processo ainda está executando no fim do quantum, é feita a preempção da CPU e ela é dado a outro processo. Se o processo bloqueou ou terminou antes de o quantum ter passado, é feita a comutação da CPU quando o processo bloqueia naturalmente"}. \citep[p.70]{tanenbaum2009sistemas}
+	
+	Trata-se de um algoritmo simples, é grande parte de seu desempenho esta relacionado ao tamanho do quantum.
+
+	\item \textbf{Prioridade:} \textit{"A necessidade de levar em conta fatores externos conduz ao agendamento por prioridade. A ideia básica é simples e direta: a cada processo é atribuida uma prioridade, e o processo executável com a maior prioridade recebe permissão para executar"}. \citep[p.71]{tanenbaum2009sistemas}
+	
+	Ações podem ser tomadas para evitar que um processo de alta prioridade execute indefinidamente, como por exemplo, a cada determinada unidade de tempo, diminui-se a prioridade do processo.
+	
+	\item \textbf{Multiplas Filas:} Variação do agendamento por prioridade, são definidas diferentes filas para diferentes prioridades, executando-se entre os processos da fila de prioridade mais alta, se esta estiver vazia, executa-se os algoritmos da fila de prioridade menor.
+	
+	Dentro de cada fila, é executado o algoritmo Round Robin.
+	Pode-se também mover os processos entre as filas, por exemplo, mudar para uma fila de prioridade mais baixa um processo que já foi executado pela CPU por várias vezes e não foi concluído.
+	
+	\item \textbf{Job Mais Primeiro:} \textit{"Quando vários jobs igualmente importantes estão na fila de entrada esperando para ser iniciados, o agendador deve utilizar job mais curto primeiro"}. \citep[p.72]{tanenbaum2009sistemas}
+	
+	Neste algoritmo, é escolhido o processo que terá menor tempo de execução para serem executados primeiro.
+	
+	Problemas deste algoritmo são que é necessário saber o tempo de execução de um algoritmo antes de sua execução, e seu tempo de resposta médio pode ser grande. 
+\end{itemize}
+
+\subsection{Gerenciamento de Memória}
+
+Sistemas de gerenciamento de memória podem ser divididos em dois tipos, os que movem processos entre a memória principal e o disco, e os que não fazem isto.
+
+Os que não fazem são mais simples, e devido a este fato são os que serão estudados aqui.
+
+A seguir serão apresentados alguns métodos de gerenciamento de memória.
+
+\subsubsection{Monoprogramação sem Troca ou Paginação}
+
+\textit{"O esquema mais simples possível de gerenciamento de memória é executar somente um programa por vez, compartilhando a memória entre esses programa e o sistema operacional"}.  \citep[p.212]{tanenbaum2009sistemas}
+
+Três possíveis maneiras de se fazer a divisão da memória nesse caso são: \textit{"O sistema operacional pode estar na parte inferior da mamória RAM (Random Access Memory, Memória de Acesso Aleatório) , ... ou pode estar na ROM (Reead Only Memory, Memória Apenas de Leitura) na parte superior ... , ou os drivers de dispositivo podem estar em uma ROM e o restante do sistema em RAM na parte inferior"}. \citep[p.212]{tanenbaum2009sistemas}
+
+\subsubsection{Multiprogramação com Partições Fixas}
+
+Mantém múltiplos programas na memória ao mesmo tempo, \textit{"A maneira mais fácil de alcançar a multiprogramação é simplesmente dividir a memória em $n$ partições (possivelmente desiguais). Esse particionamento pode ser feito por exemplo, manualmente, quando o sistema é iniciado"}. \citep[p.212]{tanenbaum2009sistemas}
+
+Problemas com esse método é a fragmentação interna, isto é espaço não utilizado por um programa dentro de sua partição e o fato de partições grandes ou pequenas podem ficar sempre vazias devido ao fato de não haverem programas que se encaixem nelas.
+
+Para solucionar esses problemas, deve-se fazer uso de paginação e segmentação.
+
+\subsubsection{Paginação}
+
+\textit{"A paginação é um esquema que permite que o espaço de endereçamento físico de um processo seja
+	não-contíguo. A paginação evita o problema de ajustar os pedaços de memória dos mais diversos tamanhos
+	no armazenamento auxiliar, um problema sério que afetou a maioria dos esquemas de gerência de memória
+	anteriores. Quando alguns fragmentos de código ou dados que residem na memória principal precisam ser
+	descarregados (operação de sivap otit), deve haver espaço disponível no armazenamento auxiliar. Os problemas de fragmentação discutidos em relação à memória principal também prevalecem com o armazenamento
+	auxiliar, exceto pelo fato de que o acesso é muito mais lento, por isso é impossível fazer a compactação. Devido às vantagens em relação aos métodos anteriores, a paginação em suas muitas formas é utilizada com frequência em muitos sistemas operacionais"}. \citep[p.189]{silberschatz2008sistemas}
+
+\subsubsection{Segmentação}
+
+\textit{Um aspecto importante da gerência de memória que se tornou inevitável com a paginação é a separação da visão de usuário da memória e a memória física real. A visão de usuário da memória não é igual à memória física
+	real. A visão de usuário é mapeada na memória física. O mapeamento permite a diferenciação entre memória
+	lógica e física}. \citep[p.200]{silberschatz2008sistemas}
+
+\subsection{Gerênciamento de Entrada e Saída}
+
+Será apresentado a seguir uma visão geral de como um sistema operacional gerência dispositivos de entrada e saída.
+
+\subsubsection{Dispositivos de Entrada e Saída}
+
+Podem ser divididos, de maneira geral, em duas categorias (apesar de existirem casos específicos que não se encaixam perfeitamente em nenhuma das classificações).
+
+\begin{itemize}
+	\item \textbf{Dispositivos de Bloco:} Dispositivo que armazena informação em blocos de tamanho fixo, sendo possível acessar cada um deles de maneira independente dos demais.
+	
+	Exemplo: Disco Rígido
+	
+	\item \textbf{Dispositivo de Caractere:} Dispositivo que aceita ou entrega uma sequência de caracteres, não respeitando blocos e não sendo possível realizar pesquisa sobre ele ou endereçá-lo.
+	
+	Exemplo: Mouse, Teclado e Impressora. 		
+\end{itemize}
+
+\subsubsection{Acesso Direto a Memória (DMA)}
+
+Componente de hardware que permite que dispositivos de I/O, principalmente dispositivos de bloco, escrevam seus dados direto na memória.
+
+\subsubsection{Software}
+
+As principais metas do gerenciamento de entrada e saída pelo software são: 
+
+\begin{itemize}
+	\item Criar uma independência de dispositivo, isto é  manipular dispositivos diferentes com chamadas similares;
+	
+	\item Atribuição uniforme de nomes;
+
+	\item O tratamento de erros.
+\end{itemize}
+
+Outra questão importante é transferência síncrona ou assíncrona de dados.
+
+A transferência síncrona é baseada em bloqueios, enquanto a assíncrona se baseia em interrupções.
+
+A transferência assíncrona deixa o projeto do software mais simples.

@@ -1,0 +1,390 @@
+\section{Códigos Fonte do Analisador sintático}
+A seguir será apresentados a implementação do analisador sintático.
+
+\clearpage
+
+\lstset{
+  language=C++,
+  basicstyle=\ttfamily\scriptsize, 
+  keywordstyle=\color{blue}, 
+  stringstyle=\color{verde}, 
+  commentstyle=\color{red}, 
+  extendedchars=true, 
+  showspaces=false, 
+  showstringspaces=false, 
+  numbers=left,
+  numberstyle=\tiny,
+  breaklines=true, 
+  backgroundcolor=\color{green!10},
+  breakautoindent=true, 
+  captionpos=b,
+  xleftmargin=0pt,
+}
+
+\subsection{Implementação da Classe Arvore}
+
+\subsubsection{Header}
+
+\begin{lstlisting}
+#ifndef ARVORE_SINTATICA_H
+#define ARVORE_SINTATICA_H
+
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+class arvore
+{
+  public:
+    string value;
+    string text;
+    int line;
+    vector<arvore> filhos;
+
+  public:
+    arvore(string value, string text);
+    arvore(string text);
+    arvore(string value, string text, int line);
+    void set_value(string value);
+    void inserir_filho( arvore filho);
+    void print_item( );
+    void print( int i );
+    void print( );
+
+    bool is_terminal( );
+};
+
+#endif
+\end{lstlisting}
+
+\subsubsection{Implementaç\~ao}
+
+\begin{lstlisting}
+#include "arvore_sintatica.hpp"
+
+using namespace std;
+
+arvore::arvore( string value , string text )
+{this->value = value; this->text = text; this->line = -1;}
+
+arvore::arvore( string text )
+{ this->text = text; this->line = -1;}
+
+
+arvore::arvore( string value , string text, int line )
+{this->value = value; this->text = text; this->line = line;}
+
+void arvore::set_value( string value ){ this->value = value; }
+
+void arvore::inserir_filho( arvore filho )
+{ this->filhos.push_back(filho); }
+
+void arvore::print_item( )
+{
+
+  if(this->filhos.size( ) == 0  and this->value != "")
+    cout<<this->text<<" : "<<this->value<<": linha "<<this->line<<endl;
+  else
+    cout<<this->text<<endl;
+}
+
+
+void arvore::print( int identacao )
+{
+  for(int j=0; j<identacao; j++)
+    cout<<"   ";
+
+  this->print_item( );
+
+  identacao++;
+
+  for(int i=0; i<this->filhos.size( ); i++)
+    this->filhos[i].print( identacao );
+}
+
+
+void arvore::print( )
+{
+  this->print_item( );
+
+  for(int i=0; i<this->filhos.size( ); i++)
+    this->filhos[i].print( 1 );
+}
+
+bool arvore::is_terminal( )
+{
+  if(this->filhos.size( )==0)
+    return true;
+  else
+    return false;
+}
+\end{lstlisting}
+
+
+
+\subsection{Implementação do parser com a Ferramenta Bison}
+
+\begin{lstlisting}
+%{
+#include "common.hpp"
+#include "arvore_sintatica.hpp"
+
+arvore* root;
+arvore* temp;
+int last_var_type;
+
+string save_num;
+string save_txt;
+int save_func_line;
+
+using namespace std;
+
+%}
+
+%union {
+  arvore* node;
+  double  value;
+	char*  text;
+}
+
+%start programa
+%nonassoc IFX
+%token <text> ATRIBUICAO
+%token <node> INT_NUM
+%token <node> FLOAT_NUM
+%token <node> ID
+
+//Palavra Reservadas
+%token <text>IF
+%nonassoc <text>ELSE
+%token <text>WHILE
+%token <text>RETURN
+%token <text>INT
+%token <text>FLOAT
+%token <text>VOID
+
+//Simbolos Especiais
+%token <text>SOMA
+%token <text>SUB
+%token <text>MULT
+%token <text>DIV
+%token <text>IGUAL
+%token <text>MAIOR
+%token <text>MENOR
+%token <text>MAIOR_IGUAL
+%token <text>MENOR_IGUAL
+%token <text>DIFERENTE
+%token <text>PARENTESES_ABRE
+%token <text>PARENTESES_FECHA
+%token <text>COLCHETES_ABRE
+%token <text>COLCHETES_FECHA
+%token <text>CHAVES_ABRE
+%token <text>CHAVES_FECHA
+%token <text>PONTO_VIRGULA
+
+%token <text>VIRGULA
+
+%token FIM
+%token <text>NEW_LINE
+%token <text>ERROR_START
+%token <text>ERROR
+%token <text>ERROR_END
+%token <text>ERROR_END_NEW_LINE
+
+%token MULT_LINE_COMMENT_BEGIN
+%token MULT_LINE_COMMENT_END
+
+%type <node> programa;
+%type <node> declaracao;
+%type <node> var-declaracao;
+%type <node> fun-declaracao;
+%type <node> tipo-especificador;
+%type <node> params;
+%type <node> param;
+%type <text> relacional;
+%type <node> mult-var-decl;
+%type <node> var-decl;
+%type <node> param-lista;
+%type <node> composto-decl;
+%type <node> local-declaracao;
+%type <node> statement;
+%type <node> statement-lista;
+%type <node> expressao-decl;
+%type <node> selecao-decl;
+%type <node> iteracao-decl;
+%type <node> retorno-decl;
+%type <node> var;
+%type <node> simples-expressao;
+%type <node> soma-expressao;
+%type <node> soma;
+%type <node> termo;
+%type <node> mult;
+%type <node> fator;
+%type <node> ativacao;
+%type <node> arg-lista;
+%type <node> expressao;
+%type <node> args;
+
+%%
+
+
+programa: programa declaracao 
+          {$$ = $1; $$->inserir_filho(*$2); root = $$; } 
+          |/*entrada vazia*/
+          {$$ = new arvore("","programa"); root = $$;};
+
+declaracao: var-declaracao
+           |fun-declaracao 
+           |error {$$ = new arvore("", "erro"); } ;
+
+var-declaracao: tipo-especificador var-decl mult-var-decl PONTO_VIRGULA
+                { $$ = $3;  $$->inserir_filho( *$2 ); $$->inserir_filho(*$1);} ;
+
+mult-var-decl: VIRGULA var-decl mult-var-decl { $$ = $3; $$->inserir_filho( *$2 ); }
+               | /*entrada vazia*/ {$$ = new arvore("", "var-declaracaos");} ;
+
+var-decl: ID { $$ = new arvore( "" , "var-decl"); $$->inserir_filho( arvore(text_id, "ID", linhas) );}
+         |ID COLCHETES_ABRE INT_NUM {save_num = yytext;} COLCHETES_FECHA
+         { $$ = new arvore( "" , "vet-decl"); 
+           $$->inserir_filho( arvore(text_id, "ID", linhas)  );
+           $$->inserir_filho( arvore(save_num, "INT_NUM", linhas)  ); };
+
+tipo-especificador: INT {$$ = new arvore("int" , "tipo", linhas);}
+                   | FLOAT {$$ = new arvore("float" , "tipo", linhas);}
+                   | VOID {$$ = new arvore("void" , "tipo", linhas);} ;
+
+fun-declaracao: tipo-especificador ID {save_txt = text_id; save_func_line = linhas; }
+                PARENTESES_ABRE params PARENTESES_FECHA composto-decl
+                  {$$ = new arvore( "" , "fun-declaracao"); $$->inserir_filho(*$1);
+                  $$->inserir_filho( arvore(save_txt, "ID", save_func_line) );
+                  $$->inserir_filho(*$5); $$->inserir_filho(*$7);}
+                | tipo-especificador error composto-decl
+                  {$$ = new arvore("" , "fun-declaracao"); $$->inserir_filho(*$1);
+                  $$->inserir_filho(arvore( "" , "erro" )); $$->inserir_filho(*$3);};
+
+params: param param-lista { $$ = $2; $$->inserir_filho(*$1); }
+       | VOID {$$ = new arvore("","lista_parametros"); }
+       | /*entrada vazia*/ {$$ = new arvore("","lista_parametros");};
+
+param-lista: VIRGULA param param-lista { $$ = $3; $$->inserir_filho(*$2); }
+           | /* entrada vazia */ {$$ = new arvore("","lista_parametros");} ;
+
+param: tipo-especificador ID {$$ = new arvore("", "param-var"); 
+                          $$->inserir_filho( arvore(text_id, "ID", linhas) );
+                          $$->inserir_filho( *$1 ); }
+     | tipo-especificador ID COLCHETES_ABRE COLCHETES_FECHA
+        {$$ = new arvore("", "param-vet"); $$->inserir_filho(*$1); 
+         $$->inserir_filho( arvore(text_id, "ID", linhas)); } ;
+
+composto-decl: CHAVES_ABRE local-declaracao statement-lista CHAVES_FECHA
+               {$$ = new arvore("","declaracao-composta");
+                if(! $2->is_terminal() )
+                  $$->inserir_filho(*$2);
+                if(! $3->is_terminal() )
+                  $$->inserir_filho(*$3);};
+
+local-declaracao: local-declaracao var-declaracao {$$ = $1; $$->inserir_filho(*$2);}
+                | local-declaracao error var-declaracao {$$ = $1; $$->inserir_filho(*$3);}
+                |/* entrada vazia */ {$$ = new arvore("","declaracao-local");};
+
+statement-lista: statement-lista statement {$$ = $1; $$->inserir_filho(*$2);}
+               | statement-lista error statement {$$ = $1; $$->inserir_filho(*$3);}
+               | /* entrada vazia */ {$$ = new arvore("","statement-lista");} ;
+
+statement: expressao-decl | composto-decl | selecao-decl | iteracao-decl | retorno-decl ;
+
+expressao-decl: expressao PONTO_VIRGULA 
+               {$$  = new arvore("", "expressao"); $$->inserir_filho(*$1);}
+              | PONTO_VIRGULA {$$  = new arvore("", "expressao"); } ;
+
+selecao-decl: IF PARENTESES_ABRE expressao PARENTESES_FECHA statement %prec IFX
+                {$$ = new arvore("","selecao"); $$->inserir_filho(*$3);
+                 $$->inserir_filho(*$5);}
+            | IF PARENTESES_ABRE expressao PARENTESES_FECHA statement ELSE statement
+                {$$ = new arvore("","selecao"); $$->inserir_filho(*$3); 
+                 $$->inserir_filho(*$5); $$->inserir_filho(*$7);};
+
+iteracao-decl: WHILE PARENTESES_ABRE expressao PARENTESES_FECHA statement
+                {$$ = new arvore("","iteracao"); $$->inserir_filho(*$3); 
+                 $$->inserir_filho(*$5);};
+
+retorno-decl: RETURN PONTO_VIRGULA {$$ = new arvore("VOID","return",linhas);}
+            | RETURN expressao PONTO_VIRGULA
+            {$$ = new arvore("","return"); $$->inserir_filho(*$2);};
+
+expressao: var ATRIBUICAO expressao
+           {$$ = new arvore("","="); $$->inserir_filho(*$1);  $$->inserir_filho(*$3);}
+         | simples-expressao {$$ = $1;};
+
+var: ID {$$ = new arvore("","var"); $$->inserir_filho(arvore(text_id, "ID", linhas));}
+   | ID
+     COLCHETES_ABRE expressao COLCHETES_FECHA
+        {$$ = new arvore("","vet"); $$->inserir_filho(arvore(text_id, "ID", linhas));
+        $$->inserir_filho(*$3);};
+
+simples-expressao: soma-expressao relacional soma-expressao { $$ = new arvore("", $2);
+                   $$->inserir_filho(*$1); $$->inserir_filho(*$3);}
+                 | soma-expressao {$$ = $1;} ;
+
+relacional: MAIOR_IGUAL {$$ = ">=";} | MAIOR {$$ = ">";} | MENOR {$$ = "<";} 
+           | MENOR_IGUAL {$$ = "<=";} | IGUAL {$$ = "==";} | DIFERENTE {$$ = "!=";} ;
+
+soma-expressao: soma-expressao soma termo 
+                { $$ = $2; $$->inserir_filho(*$1); $$->inserir_filho(*$3);}
+              | SOMA termo { $$ = new arvore("","+"); $$->inserir_filho(*$2); };
+              | SUB  termo { $$ = new arvore("","-"); $$->inserir_filho(*$2); };
+              | termo {$$ = $1; };
+
+soma: SOMA {$$ = new arvore("","+");} | SUB {$$ = new arvore("","-");} ;
+
+termo: termo mult fator { $$ = $2; $$->inserir_filho(*$1); $$->inserir_filho(*$3); }
+     | fator {$$ = $1; } ;
+
+mult: MULT {$$ = new arvore("","*");} | DIV {$$ = new arvore("","/");};
+
+fator: PARENTESES_ABRE expressao PARENTESES_FECHA {$$ = $2;}
+     | var {$$ = $1;}
+     | ativacao {$$ = $1;}
+     | INT_NUM {$$ = new arvore(yytext, "INT_NUM", linhas);};
+
+ativacao: ID
+          PARENTESES_ABRE args PARENTESES_FECHA
+          { $$ = new arvore("","ativacao");
+            $$->inserir_filho( arvore(text_id, "ID", linhas) );
+            $$->inserir_filho( *$3 ); };
+
+args: arg-lista {$$ = $1;}
+    | /* entrada vazia */ { $$ = new arvore("","argumentos"); } ;
+
+arg-lista: arg-lista VIRGULA expressao {$$ = $1; $$->inserir_filho(*$3);}
+         | expressao {$$ = new arvore("","argumentos"); $$->inserir_filho(*$1);} ;
+
+%%
+
+using namespace std;
+
+bool erro_sintatico;
+
+vector<string> erros_sintaticos;
+
+void yyerror(char * msg)
+{
+	erro_sintatico = true;
+
+	if(erro_lexico == true)
+	{
+		erro_lexico = false;
+		erros_sintaticos.push_back
+		("erro lexico: " + erro_txt + " linha: " + to_string(linhas));
+	}
+	else
+		erros_sintaticos.push_back
+		("erro sintatico: " + string(yytext) + " linha: " + to_string(linhas));
+}
+
+\end{lstlisting}
+

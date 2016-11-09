@@ -1,0 +1,59 @@
+\select@language {brazil}
+\contentsline {section}{\numberline {1}Introdu\IeC {\c c}\~ao}{6}{section.1}
+\contentsline {subsection}{\numberline {1.1}Contextualiza\IeC {\c c}\IeC {\~a}o}{6}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Objetivos}{6}{subsection.1.2}
+\contentsline {subsubsection}{Objetivos Gerais}{6}{section*.4}
+\contentsline {subsubsection}{Objetivos Especificos}{6}{section*.5}
+\contentsline {section}{\numberline {2}Fundamenta\IeC {\c c}\IeC {\~a}o Te\IeC {\'o}rica}{7}{section.2}
+\contentsline {subsection}{\numberline {2.1}CPU}{7}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Unidade de Processamento}{7}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Unidade de Controle (UC)}{7}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Unidade de Controle Hardwired e Microprogramada}{7}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Circuito Combinacionais e Sequenciais}{7}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}M\IeC {\'a}quina de Estados}{7}{subsection.2.6}
+\contentsline {subsubsection}{M\IeC {\'a}quina de Estados Finitos de Moore}{7}{section*.6}
+\contentsline {subsubsection}{M\IeC {\'a}quina de Estados Finitos de Mealy}{8}{section*.7}
+\contentsline {subsection}{\numberline {2.7}Conjunto de Instru\IeC {\c c}\IeC {\~o}es}{8}{subsection.2.7}
+\contentsline {subsection}{\numberline {2.8}RISC e CISC}{8}{subsection.2.8}
+\contentsline {subsection}{\numberline {2.9}Arquitetura LOAD/STORE}{8}{subsection.2.9}
+\contentsline {subsection}{\numberline {2.10}FPGA}{8}{subsection.2.10}
+\contentsline {subsection}{\numberline {2.11}Linguagem de Descri\IeC {\c c}\IeC {\~a}o de Hardware}{8}{subsection.2.11}
+\contentsline {subsection}{\numberline {2.12}Express\IeC {\~a}o Regular}{8}{subsection.2.12}
+\contentsline {subsection}{\numberline {2.13}Gram\IeC {\'a}tica Livre de Contexto}{9}{subsection.2.13}
+\contentsline {subsection}{\numberline {2.14}Compilador}{9}{subsection.2.14}
+\contentsline {subsection}{\numberline {2.15}Sistema Operacional}{9}{subsection.2.15}
+\contentsline {subsection}{\numberline {2.16}Processos}{9}{subsection.2.16}
+\contentsline {subsection}{\numberline {2.17}Escalonamento da CPU}{9}{subsection.2.17}
+\contentsline {subsubsection}{Principais Crit\IeC {\'e}rios}{10}{section*.8}
+\contentsline {subsubsection}{Preemp\IeC {\c c}\IeC {\~a}o}{10}{section*.9}
+\contentsline {subsubsection}{Principais Algoritmos}{10}{section*.10}
+\contentsline {subsection}{\numberline {2.18}Gerenciamento de Mem\IeC {\'o}ria}{11}{subsection.2.18}
+\contentsline {subsubsection}{Monoprograma\IeC {\c c}\IeC {\~a}o sem Troca ou Pagina\IeC {\c c}\IeC {\~a}o}{11}{section*.11}
+\contentsline {subsubsection}{Multiprograma\IeC {\c c}\IeC {\~a}o com Parti\IeC {\c c}\IeC {\~o}es Fixas}{11}{section*.12}
+\contentsline {subsubsection}{Pagina\IeC {\c c}\IeC {\~a}o}{11}{section*.13}
+\contentsline {subsubsection}{Segmenta\IeC {\c c}\IeC {\~a}o}{12}{section*.14}
+\contentsline {subsection}{\numberline {2.19}Ger\IeC {\^e}nciamento de Entrada e Sa\IeC {\'\i }da}{12}{subsection.2.19}
+\contentsline {subsubsection}{Dispositivos de Entrada e Sa\IeC {\'\i }da}{12}{section*.15}
+\contentsline {subsubsection}{Acesso Direto a Mem\IeC {\'o}ria (DMA)}{12}{section*.16}
+\contentsline {subsubsection}{Software}{12}{section*.17}
+\contentsline {section}{\numberline {3}Termos Utilizados}{13}{section.3}
+\contentsline {section}{\numberline {4}O Processador}{14}{section.4}
+\contentsline {subsection}{\numberline {4.1}Vis\IeC {\~a}o Geral da Arquitetura}{14}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Elementos da Unidade de Processamento}{14}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Elementos da Unidade de Controle}{16}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Formato de Instru\IeC {\c c}\~oes}{17}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Conjunto de Instru\IeC {\c c}\~oes}{17}{subsection.4.5}
+\contentsline {section}{\numberline {5}O Compilador}{19}{section.5}
+\contentsline {subsection}{\numberline {5.1}A linguagem C-}{19}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Tokens}{19}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Express\IeC {\~o}es Regulares}{20}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Gram\IeC {\'a}tica Livre de Contexto}{21}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}Retorno de Erros}{23}{subsection.5.5}
+\contentsline {section}{\numberline {6}O Sistema Operacional}{24}{section.6}
+\contentsline {subsection}{\numberline {6.1}O Sistema Operacional: Altera\IeC {\c c}\IeC {\~o}es no Hardware}{24}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}O Sistema Operacional: Software}{24}{subsection.6.2}
+\contentsline {subsubsection}{Ger\IeC {\^e}nciamento de Processos}{25}{section*.18}
+\contentsline {subsubsection}{Ger\IeC {\^e}nciamneto de Mem\IeC {\'o}ria}{25}{section*.19}
+\contentsline {subsubsection}{Ger\IeC {\^e}nciamento de Entrada e Sa\IeC {\'\i }da}{26}{section*.20}
+\contentsline {section}{\numberline {7}Etapas Futuras e Poss\IeC {\'\i }veis Melhorias}{27}{section.7}
+\contentsline {section}{Refer\IeC {\^e}ncias}{28}{section.7}

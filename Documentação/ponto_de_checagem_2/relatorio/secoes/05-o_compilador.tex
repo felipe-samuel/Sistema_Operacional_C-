@@ -1,0 +1,212 @@
+\section{O Compilador}
+
+O compilador foi implementado fazendo uso da linguagem de programação C++, em conjunto com as ferramentas Flex (para realizar a analise léxica) e Bison (para realizar a análise sintática).
+
+Seu objetivo consiste em traduzir um código escrito na linguagem C- para o conjunto de instruções do Sistema Computacional, listando os erros léxicos, sintáticos e semânticos, caso encontrados.
+
+Nesta seção há uma breve descrição de seu funcionamento, o código fonte deste projeto pode ser encontrado em: 
+
+\url{https://github.com/felipe-samuel/compilador-c-}
+ 
+
+\subsection{A linguagem C-}
+
+A linguagem de programação C- trata-se de uma simplificação da linguagem C, possuindo as seguintes limitações:
+
+\begin{itemize}
+	\item Não podem haver declarações de protótipos de funções;
+	
+	\item Apenas um tipo do dados, os inteiros (int);
+	
+	\item Não há utilização de ponteiros;
+	
+	\item As variáveis devem ser declaradas no inicio do código ou da função;
+	
+	\item A entrada de dados é feita pela função input, e a saída pela função output.
+\end{itemize} 
+
+\subsection{Tokens}
+
+A Tabela \ref{tb:tokens} mostra a lista de tokens aceitos pela linguagem.
+
+\clearpage
+
+\begin{table}[!htb]
+	\centering
+	\caption{ Lista de Tokens Reconhecidos}
+	\label{tb:tokens}
+	
+	\begin{tabular}{|c|c|c|c|}
+		
+		\hline
+		\textbf{Texto Reconhecido} & \textbf{Token Retornado}\\
+		\hline
+		
+		
+		$if$		  		 &                          IF\\
+		\hline
+		$else$  	   		 &                          ELSE\\
+		\hline
+		$while$		     &	                        WHILE\\
+		\hline
+		$return$			 &	                        RETURN\\
+		\hline
+		$int$			     &	                        INT\\
+		\hline
+		$void$			 &		                    VOID\\
+		\hline
+		$+$				 &		                    SOMA\\
+		\hline
+		$-$				 &		                    SUB\\
+		\hline
+		$*$				 &		                    MULT\\
+		\hline
+		$/$				 &		                    DIV\\
+		\hline
+		$!=$               &                          DIFERENTE\\
+		\hline
+		$==$				 &                          IGUAL\\
+		\hline
+		$>=$			     &                          MAIOR\_IGUAL\\
+		\hline
+		$<=$				 &                          MENOR\_IGUAL\\
+		\hline
+		$=$				 &	                        ATRIBUICAO\\
+		\hline
+		$>$				 &		                    MAIOR\\
+		\hline
+		$<$				 &		                    MENOR\\
+		\hline
+		$($				 &		                    PARENTESES\_ABRE\\
+		\hline
+		$)$				 &		                    PARENTESES\_FECHA\\
+		\hline
+		$[$				 &		                    COLCHETES\_ABRE\\
+		\hline
+		$]$				 &		                    COLCHETES\_FECHA\\
+		\hline
+		$\{$				 &	                        CHAVES\_ABRE\\
+		\hline
+		$\}$				 &		                    CHAVES\_FECHA\\
+		\hline
+		$;$				 &		                    PONTO\_VIRGULA\\
+		\hline
+		$,$                &                          VIRGULA\\
+		\hline
+		
+		texto iniciado por uma letra,                    &   ID\\
+		podendo conter letras e números  & \\ 
+		\hline
+		número inteiro    & 					                               INT\_NUM\\
+		\hline
+		
+		sequencia de caracteres diferente   &                   ERROR\\
+		dos citados anteriormente             &       \\
+		\hline
+		
+	\end{tabular}
+	
+\end{table}
+
+
+
+\subsection{Expressões Regulares}
+
+O Algoritmo \ref{al:expressaoregular} mostra as expressões regulares usadas nessa linguagem.
+
+\clearpage
+
+\begin{algorithm}
+
+	\begin{center}
+		$digito = [0-9]$ \\
+		$letra = [a-zA-Z]$ \\
+		$INT\_NUM = (+|-)? digito+$\\
+		$ID = letra+ (letra|digito)*$\\
+	\end{center}
+	
+	\caption{Expressões Regulares da Linguagem C-}
+	\label{al:expressaoregular}
+\end{algorithm}
+
+
+\subsection{Gramática Livre de Contexto}
+
+A gramática livre de contexto aceita por esta linguagem é mostrada no Algoritmo \ref{al:sintaxec-}.
+
+\begin{algorithm}
+
+\lstset{
+  language=C++,
+  basicstyle=\ttfamily\footnotesize, 
+  keywordstyle= , 
+  stringstyle= , 
+  commentstyle=,
+  extendedchars=true, 
+  showspaces=false, 
+  showstringspaces=false, 
+  numbers=left,
+  numberstyle=\tiny,
+  breaklines=true, 
+  backgroundcolor=\color{branco},
+  breakautoindent=true, 
+  captionpos=b,
+  xleftmargin=0pt,
+}
+
+\begin{lstlisting}
+programa -> programa declaracao
+declaracao -> var-declaracao | fun-declaracao | error
+var-declaracao -> tipo-especificador var-decl mult-var-decl PONTO_VIRGULA
+mult-var-decl -> VIRGULA var-decl mult-var-decl | /*entrada vazia*
+var-decl -> ID | ID COLCHETES_ABRE INT_NUM COLCHETES_FECHA
+tipo-especificador -> INT | VOID
+fun-declaracao -> tipo-especificador ID PARENTESES_ABRE params PARENTESES_FECHA composto-decl | tipo-especificador error composto-decl
+params -> param param-lista | VOID  | /*entrada vazia*/
+param-lista -> VIRGULA param param-lista  | /* entrada vazia */
+param -> tipo-especificador ID | tipo-especificador ID COLCHETES_ABRE COLCHETES_FECHA
+composto-decl -> CHAVES_ABRE local-declaracao statement-lista CHAVES_FECHA
+local-declaracao -> local-declaracao var-declaracao | local-declaracao error var-declaracao | /* entrada vazia */
+statement-lista -> statement-lista statement | statement-lista error statement | /* entrada vazia */ 
+statement -> expressao-decl | composto-decl | selecao-decl | iteracao-decl | retorno-decl 
+expressao-decl -> expressao PONTO_VIRGULA | PONTO_VIRGULA
+selecao-decl -> IF PARENTESES_ABRE expressao PARENTESES_FECHA statement | IF PARENTESES_ABRE expressao PARENTESES_FECHA statement ELSE statement
+iteracao-decl -> WHILE PARENTESES_ABRE expressao PARENTESES_FECHA statement
+retorno-decl -> RETURN PONTO_VIRGULA | RETURN expressao PONTO_VIRGULA
+expressao -> var ATRIBUICAO expressao | simples-expressao
+var -> ID | ID COLCHETES_ABRE expressao COLCHETES_FECHA
+simples-expressao -> soma-expressao relacional soma-expressao | soma-expressao
+relacional: MAIOR_IGUAL | MAIOR | MENOR | MENOR_IGUAL | IGUAL | DIFERENTE
+soma-expressao -> soma-expressao soma termo | SOMA termo | SUB  termo | termo
+soma -> SOMA | SUB
+termo -> termo mult fator | fator
+mult -> MULT | DIV
+fator -> PARENTESES_ABRE expressao PARENTESES_FECHA | var | ativacao | INT_NUM
+ativacao -> ID PARENTESES_ABRE args PARENTESES_FECHA
+args -> arg-lista | /* entrada vazia */ 
+arg-lista -> arg-lista VIRGULA expressao | expressao
+\end{lstlisting}  
+
+\caption{Gramática Livre de Contexto Aceita pela Lingagem de Programação C-}       
+\label{al:sintaxec-}
+
+\end{algorithm} 
+\clearpage
+
+\subsection{Retorno de Erros}
+
+O compilador retorna erros léxicos que não se encaixam em nenhum token e erros sintáticos que não são satisfazem a gramática livre de contexto.
+
+Os seguintes erros semânticos também são retornados: 
+
+\begin{itemize}
+	\item Atribuição de variável a vetor ou vetor a variável;
+	\item Retorno de função como vetor;
+	\item Criação de variáveis do tipo void;
+	\item Utilização de variáveis não declaradas; 
+	\item Declaração de variáveis já declaradas;
+	\item Programa sem função main.
+\end{itemize}
+
+
+\clearpage

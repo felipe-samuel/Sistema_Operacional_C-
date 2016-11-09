@@ -1,0 +1,37 @@
+\begin{thebibliography}{}
+
+\bibitem[AHO et~al., 2008]{aho2008compiladores}
+AHO, A., Sethi, R., and Lam, S. (2008).
+\newblock {\em Compiladores: princ{\'\i}pios, t{\'e}cnicas e ferramentas}.
+\newblock LONGMAN DO BRASIL.
+
+\bibitem[Altera, 2015]{Altera2015FPGA}
+Altera (2015).
+\newblock What is an fpga?
+\newblock Disponivel em:
+  {\\$<$\url{http://www.altera.com/products/fpga.html}$>$. Acesso em: 13 abril
+  2015 }.
+
+\bibitem[CASILLO, 2015]{CASILLO}
+CASILLO, L.~A. (2015).
+\newblock T{\'o}picos em vhdl.
+\newblock Disponivel em:
+  {\\$<$\url{http://www2.ufersa.edu.br/portal/view/uploads/setores/145/arquivos/arq/trabalhos/vhdl_epoca.pdf}$>$
+  Acesso em: 23 outubro 2016}.
+
+\bibitem[Floyd, 2009]{floyd2009sistemas}
+Floyd, T. (2009).
+\newblock {\em Sistemas Digitais: Fundamentos e Aplica{\c{c}}{\~o}es}.
+\newblock Bookman.
+
+\bibitem[Silberschatz, 2008]{silberschatz2008sistemas}
+Silberschatz, A. (2008).
+\newblock {\em Sistemas Operacionais com Java}.
+\newblock Elsevier/Campus.
+
+\bibitem[Tanenbaum and Woodhull, 2009]{tanenbaum2009sistemas}
+Tanenbaum, A. and Woodhull, A. (2009).
+\newblock {\em Sistemas Operacionais: Projetjos e Implementa{\c{c}}{\~a}o}.
+\newblock Bookman.
+
+\end{thebibliography}

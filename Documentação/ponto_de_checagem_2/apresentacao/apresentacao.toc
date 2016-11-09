@@ -1,0 +1,14 @@
+\beamer@endinputifotherversion {3.26pt}
+\select@language {brazil}
+\beamer@sectionintoc {1}{Introdu\IeC {\c c}\IeC {\~a}o}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Motiva\IeC {\c c}\IeC {\~a}o}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Objetivos}{4}{0}{1}
+\beamer@sectionintoc {2}{Fundamenta\IeC {\c c}\IeC {\~a}o Te\IeC {\'o}rica}{5}{0}{2}
+\beamer@subsectionintoc {2}{1}{CPU}{6}{0}{2}
+\beamer@subsectionintoc {2}{2}{Compilador}{7}{0}{2}
+\beamer@subsectionintoc {2}{3}{Sistema Operacional}{8}{0}{2}
+\beamer@sectionintoc {3}{O Projeto}{9}{0}{3}
+\beamer@subsectionintoc {3}{1}{O Processador}{10}{0}{3}
+\beamer@subsectionintoc {3}{2}{O Compilador}{13}{0}{3}
+\beamer@subsectionintoc {3}{3}{O Sistema Operacional}{16}{0}{3}
+\beamer@sectionintoc {4}{Etapas Futuras e Poss\IeC {\'\i }veis Melhorias}{22}{0}{4}

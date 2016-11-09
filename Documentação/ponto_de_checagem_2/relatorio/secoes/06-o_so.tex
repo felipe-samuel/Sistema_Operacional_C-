@@ -1,0 +1,122 @@
+\section{O Sistema Operacional}
+
+Nesta seção serão definidas as especificações do Sistema Operacional a ser implementado, sendo eles os algoritmos de gerenciamento de processos, memória, e entrada e saída.
+
+O sistemas operacional que será proposto terá partes de sua implementação realizada em software e parte em hardware.
+
+\subsection{O Sistema Operacional: Alterações no Hardware}
+
+Para implementar o sistema operacional, serão necessários realizar alterações na plataforma de hardware existente.
+
+Serão criadas três buffers de propósito geral.
+
+Esses buffers poderão funcionar no modo FIFO (\textit{First in First Out}) ou no modo pilha.
+
+Cada uma desses buffers poderá ser acessada através das seguintes instruções:
+
+\begin{itemize}
+	\item \textbf{push[R1]:} Salvará o conteúdo do registrador R1 no final do buffer, se não houverem posições vazias, nada acontece;
+	
+	\item \textbf{FIFOpop[\textit{R1}]:} Salvará no registrador R1 o valor contido na primeira posição do buffer, apagará este valor do buffer, se estiver vazio, nada acontece;
+		
+	\item \textbf{STACKpop[\textit{R1}]:} Salvará em no registrador R1 o valor contido na última posição do buffer, apagará este valor do buffer, se estiver vazio, nada acontece;
+	
+	\item \textbf{write[R1,R2]:} Copiara o conteúdo do registrador R1 para a posição do buffer contida no registrador R2; 
+	
+	\item \textbf{read[R1,R2]:} Copiara o conteúdo armazenado no buffer, na posição contida no registrador R2, para o registrador R1;
+	
+	\item \textbf{top[R1]:} Armazena no registrador R1 o endereço do topo do buffer;
+
+	\item \textbf{down[R1]:} Armazena no registrador R1 o endereço do fundo do buffer.
+\end{itemize}
+
+Essas esses buffers serão utilizadas pelo software para realizar o gerenciamento de processos e passagens de parâmetro.
+
+Será necessário também a criação de um sistema de interrupções para os retirar um processo da CPU após um determinado quantum. 
+
+\subsection{O Sistema Operacional: Software}
+
+Em software, serão criados processos do próprio sistema operacional que cuidarão das seguintes funcionalidades:
+
+\begin{itemize}
+	\item Gerenciamento de processos;
+	\item Gerenciamento de memória;
+	\item Gerenciamento de entradas e saídas.
+\end{itemize}
+
+\subsubsection{Gerênciamento de Processos}
+
+Os processos serão constituídos dos seguintes componentes:
+
+\begin{itemize}
+	\item Instruções contidas na memória de instruções;
+	
+	\item Uma zona na memória de dados definida por dois ponteiros, um de inicio (PI) e outro de fim (PF);
+	
+	\item Um contador de programa (PC), que defini a instrução a ser executada. 
+\end{itemize}
+
+No sistema operacional a ser implementado, os processos poderão estar em três estados, sendo eles pronto, executando e bloqueado, como mostrado na Figura \ref{fig::DiagramaProcessos}.
+
+ 
+Os processos no estado \textit{''Pronto''} estão prontos para serem executados, e ficarão em armazenados em uma pilha (seus PCs,PIs e PFs). 
+
+O processo no estado \textit{''Executando''} esta sendo executado no momento.
+
+Os processos no estado \textit{''Bloqueado''} estão esperando por uma operação de entrada e saída, estão armazenados em outra pilha (seus PCs,PIs e PFs).
+
+\begin{figure}[!htb]
+	\centering
+	\footnotesize
+	\begin{tikzpicture}[shorten >=1pt,node distance=4cm,auto] 
+	\node[state,initial] (q_0)   {Pronto}; 
+	\node[state] (q_1) [right=of q_0] {{\tiny Executando}}; 
+	\node[state] (q_2) [below left of= q_1] {{\tiny Bloqueado}}; 
+	
+	\path[->] 
+	(q_0) edge[bend left] node[above]  {{\footnotesize processo escalonado}} (q_1)
+	
+	edge [loop above] node[align=left] {Outro processo\\ em execução} ()
+	
+	(q_1) edge [loop above] node[align=left] {Processo continua\\ em execução} ()
+	
+	edge[bend left] node[below]  {sofre prenpção} (q_0)
+	
+	edge node {Processo esperando $I/O$} (q_2)
+	
+	(q_2)edge [loop below] node {Processo esperando $I/O$} ()
+	
+	edge node {$I/O$ resolvida} (q_0);
+	
+	
+	\end{tikzpicture}
+	
+	\caption{Diagrama de Estados dos Processos}
+	\label{fig::DiagramaProcessos}
+\end{figure}
+
+Será implementado um processo que terá a funcionalidade de implementar o escalonamento dos demais processos.
+
+Inicialmente, será implementado o algoritmo Round Robin para realizar o escalonamento, de forma que a cada\textit{''quantum''}, o processo de gerenciamento seja chamado, escolhendo o próximo processo da fila de prontos.
+
+A fila de prontos funcionará no modo FIFO.
+
+\subsubsection{Gerênciamneto de Memória}
+
+A memória sera gerenciada em um modelo de multiprogramação com partições fixas, isto é, quando o sistema operacional é iniciado, um processo de gerenciamento de memória terá inicio, e dividirá a memória interna em partições, atribuindo uma partição a cada processo que deverá ser executado pelo SO.
+
+Trata-se de partições de tamanho variável, adequando-se ao que é exigido pelo processo, e fixa, um processo sempre utilizará a mesma partição de memória.
+
+Os processos a serem executados são fixos, e devem ser definidos antes do início do SO.
+
+As informações do início e do fim da zona de memória interna de cada processo são armazenadas pelos próprios processo.
+
+\subsubsection{Gerênciamento de Entrada e Saída}
+
+Haverá um processo cuja função será gerenciar os dispositivos de entrada e saída de maneira mais eficiente.
+
+Sua principal funcionalidade será enviar e receber dados dos dispositivos conectados aos componentes de hardware \textit{Entradas} e \textit{Saídas}, fornecendo aos processos um funcionamento assíncrono.
+
+Os dispositivos ainda poderão ser acessados de maneira síncrona através das instruções de \textit{Output} e \textit{Input}.
+
+Este processo deverá mover um processo que fez uma requisição I/O para fila de processos bloqueados, e quando esse requisição for resolvida, mover novamente o processo para fila de prontos.
